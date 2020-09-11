@@ -1,8 +1,7 @@
 CONFIG_NAME: '3stages'
 
-DATASET_NAME: 'birds'
-EMBEDDING_TYPE: 'cnn-rnn'
-DATA_DIR: '../data/birds'
+DATASET_NAME: 'xray_ct_scan'
+DATA_DIR: '../data/xray_ct_scan'
 GPU_ID: '3'
 WORKERS: 1  # 4
 
@@ -12,18 +11,17 @@ TREE:
 
 TEST:
     B_EXAMPLE: False
-
+    SAMPLE_NUM: 100  # 30000
 
 TRAIN:
     FLAG: False
-    NET_G: '../output/birds_3stages_2020_09_09_21_15_38/Model/netG_145000.pth'
+    NET_G: '../output/xray_ct_scan_3stages_color_2020_09_10_08_52_09/Model/netG_8000.pth'
     BATCH_SIZE: 24
 
-
 GAN:
-    EMBEDDING_DIM: 128
     DF_DIM: 64
     GF_DIM: 64
     Z_DIM: 100
     R_NUM: 2
-    B_CONDITION: True
+    B_CONDITION: False
+

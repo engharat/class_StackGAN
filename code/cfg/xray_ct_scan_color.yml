@@ -1,0 +1,31 @@
+CONFIG_NAME: '3stages_color'
+
+DATASET_NAME: 'xray_ct_scan'
+DATA_DIR: '../data/xray_ct_scan'
+GPU_ID: '3'
+WORKERS: 8  # 4
+N_CLASSES: 3
+
+TREE:
+    BRANCH_NUM: 3
+
+
+TRAIN:
+    FLAG: True
+    NET_G: ''  # '../output/cat_3stages_color/Model/netG_epoch_1.pth'
+    NET_D: ''  #
+    BATCH_SIZE: 24
+    MAX_EPOCH: 8000
+    SNAPSHOT_INTERVAL: 2000
+    DISCRIMINATOR_LR: 0.0002
+    GENERATOR_LR: 0.0002
+    COEFF:
+      COLOR_LOSS: 50.0  # 1.0
+
+GAN:
+    DF_DIM: 64
+    GF_DIM: 64
+    Z_DIM: 100
+    R_NUM: 2
+    B_CONDITION: False
+    C_CLASS: True

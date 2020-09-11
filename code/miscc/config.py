@@ -58,6 +58,10 @@ __C.GAN.Z_DIM = 100
 __C.GAN.NETWORK_TYPE = 'default'
 __C.GAN.R_NUM = 2
 __C.GAN.B_CONDITION = False
+##new options:
+__C.GAN.RGB = True
+__C.GAN.C_CLASS = False
+__C.N_CLASSES = 3
 
 __C.TEXT = edict()
 __C.TEXT.DIMENSION = 1024
@@ -70,9 +74,9 @@ def _merge_a_into_b(a, b):
     if type(a) is not edict:
         return
 
-    for k, v in a.iteritems():
+    for k, v in a.items():
         # a must specify keys that are in b
-        if not b.has_key(k):
+        if k not in b:
             raise KeyError('{} is not a valid config key'.format(k))
 
         # the types must match, too
